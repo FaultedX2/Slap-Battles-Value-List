@@ -1,0 +1,1375 @@
+{
+ "updated": "2026-11-14",
+ "unit": "Legendary value (1 = a typical legendary)",
+ "method": "Fitted from 65 trades, asks and bids read in #trading and #high-trading (official Slap Battles Discord) between Nov 12 and Nov 14, 2026, plus how many players were offering vs. looking for each effect. The community Weekly Value List (Nov 9) is only a light anchor for effects with little trade evidence.",
+ "source": "#trading + #high-trading: 2,575 messages, 533 unique posts, ~200 traders, Nov 12–14 2026",
+ "notes": [
+  "Confidence: high = 5+ trades and stable when any single trader is left out; low = few or no trades, so the value leans on the community list and supply/demand.",
+  "Supply / wanted = how many different players were offering vs. looking for the effect over the two days.",
+  "Rares, uncommons and cat/special effects aren't valued; they're treated as ~0 in trades.",
+  "Business Man effects can't be traded."
+ ],
+ "effects": [
+  {
+   "name": "Purgatory",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 221,
+   "prev": 195,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "purg",
+    "purga"
+   ],
+   "confidence": "medium",
+   "trades": 3,
+   "supply": 15,
+   "wanted": 17,
+   "range": [
+    205,
+    232
+   ]
+  },
+  {
+   "name": "Saint Marked",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 200,
+   "prev": 197,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "saint"
+   ],
+   "confidence": "medium",
+   "trades": 2,
+   "supply": 25,
+   "wanted": 9,
+   "range": [
+    196,
+    203
+   ]
+  },
+  {
+   "name": "Damned",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 182,
+   "prev": 160,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "medium",
+   "trades": 2,
+   "supply": 17,
+   "wanted": 11,
+   "range": [
+    173,
+    189
+   ]
+  },
+  {
+   "name": "Necrobloxicon",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 112,
+   "prev": 108,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "necro"
+   ],
+   "confidence": "high",
+   "trades": 8,
+   "supply": 22,
+   "wanted": 22,
+   "range": [
+    110,
+    116
+   ]
+  },
+  {
+   "name": "Easter Eggtravaganza",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 110,
+   "prev": 125,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "egg",
+    "eggtravaganza",
+    "easter extravaganza",
+    "eggstravaganza"
+   ],
+   "confidence": "medium",
+   "trades": 3,
+   "supply": 15,
+   "wanted": 6,
+   "range": [
+    107,
+    115
+   ]
+  },
+  {
+   "name": "Pandecrownium",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 99,
+   "prev": 98,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "pande",
+    "pandecrowium"
+   ],
+   "confidence": "high",
+   "trades": 8,
+   "supply": 24,
+   "wanted": 21,
+   "range": [
+    97,
+    103
+   ]
+  },
+  {
+   "name": "Purgatory Spawn",
+   "rarity": "mythic",
+   "type": "spawn",
+   "value": 98,
+   "prev": 90,
+   "demand": "high",
+   "estimate": true,
+   "plus": false,
+   "aliases": [
+    "purg spawn"
+   ],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 5,
+   "wanted": 5,
+   "range": [
+    98,
+    98
+   ]
+  },
+  {
+   "name": "Haloheart",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 76,
+   "prev": 76,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "halo heart",
+    "halo"
+   ],
+   "confidence": "medium",
+   "trades": 2,
+   "supply": 18,
+   "wanted": 11,
+   "range": [
+    76,
+    79
+   ]
+  },
+  {
+   "name": "Dodecanado",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 57,
+   "prev": 63,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "dodeca"
+   ],
+   "confidence": "high",
+   "trades": 7,
+   "supply": 24,
+   "wanted": 5,
+   "range": [
+    55,
+    61
+   ]
+  },
+  {
+   "name": "Winter Wonderland",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 54,
+   "prev": 68,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "ww"
+   ],
+   "confidence": "high",
+   "trades": 10,
+   "supply": 23,
+   "wanted": 2,
+   "range": [
+    53,
+    57
+   ]
+  },
+  {
+   "name": "Enchanted",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 50,
+   "prev": 48,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "high",
+   "trades": 10,
+   "supply": 32,
+   "wanted": 11,
+   "range": [
+    48.5,
+    52
+   ]
+  },
+  {
+   "name": "Relude",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 44.0,
+   "prev": 43,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "high",
+   "trades": 5,
+   "supply": 30,
+   "wanted": 19,
+   "range": [
+    42.5,
+    45.0
+   ]
+  },
+  {
+   "name": "Winter Blessed Spawn",
+   "rarity": "mythic",
+   "type": "spawn",
+   "value": 31.5,
+   "prev": 32,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "winter blessed",
+    "wbs"
+   ],
+   "confidence": "medium",
+   "trades": 3,
+   "supply": 15,
+   "wanted": 5,
+   "range": [
+    31.0,
+    32.0
+   ]
+  },
+  {
+   "name": "Boombox",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 28.0,
+   "prev": 26,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "bb"
+   ],
+   "confidence": "high",
+   "trades": 5,
+   "supply": 13,
+   "wanted": 19,
+   "range": [
+    28.0,
+    28.0
+   ]
+  },
+  {
+   "name": "Barzilian Nexus",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 18.5,
+   "prev": 22,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "brazilian nexus",
+    "barzillian nexus",
+    "nexus",
+    "barz"
+   ],
+   "confidence": "medium",
+   "trades": 13,
+   "supply": 64,
+   "wanted": 18,
+   "range": [
+    17.0,
+    22.5
+   ]
+  },
+  {
+   "name": "Boombox Spawn",
+   "rarity": "mythic",
+   "type": "spawn",
+   "value": 16.5,
+   "prev": 14,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "bb spawn"
+   ],
+   "confidence": "medium",
+   "trades": 2,
+   "supply": 11,
+   "wanted": 4,
+   "range": [
+    14.0,
+    18.5
+   ]
+  },
+  {
+   "name": "Hellfire Sigil",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 15.0,
+   "prev": 18,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "hellfire",
+    "sigil"
+   ],
+   "confidence": "medium",
+   "trades": 12,
+   "supply": 54,
+   "wanted": 13,
+   "range": [
+    14.0,
+    16.0
+   ]
+  },
+  {
+   "name": "Portal",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 12.5,
+   "prev": 12,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "medium",
+   "trades": 9,
+   "supply": 49,
+   "wanted": 14,
+   "range": [
+    11.0,
+    13.0
+   ]
+  },
+  {
+   "name": "Energized",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 11.0,
+   "prev": 12,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "high",
+   "trades": 9,
+   "supply": 40,
+   "wanted": 6,
+   "range": [
+    10.5,
+    11.0
+   ]
+  },
+  {
+   "name": "Approaching Storm",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 11.0,
+   "prev": 10,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "storm",
+    "as"
+   ],
+   "confidence": "medium",
+   "trades": 2,
+   "supply": 22,
+   "wanted": 9,
+   "range": [
+    10.5,
+    11.0
+   ]
+  },
+  {
+   "name": "Jack O Lantern",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 10.5,
+   "prev": 8,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "jack-o-lantern",
+    "jol",
+    "jack o' lantern",
+    "jack"
+   ],
+   "confidence": "medium",
+   "trades": 6,
+   "supply": 23,
+   "wanted": 6,
+   "range": [
+    9.1,
+    11.5
+   ]
+  },
+  {
+   "name": "Hitman",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 8.2,
+   "prev": 8,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "high",
+   "trades": 6,
+   "supply": 33,
+   "wanted": 9,
+   "range": [
+    7.9,
+    8.7
+   ]
+  },
+  {
+   "name": "Eerie Fog",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 6.1,
+   "prev": 6.5,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "eerie"
+   ],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 24,
+   "wanted": 3,
+   "range": [
+    6.1,
+    6.1
+   ]
+  },
+  {
+   "name": "Demonic Hex",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 4.6,
+   "prev": 4.5,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "hex"
+   ],
+   "confidence": "medium",
+   "trades": 3,
+   "supply": 26,
+   "wanted": 11,
+   "range": [
+    4.5,
+    4.7
+   ]
+  },
+  {
+   "name": "Sacred",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 3.7,
+   "prev": 3.3,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "low",
+   "trades": 1,
+   "supply": 15,
+   "wanted": 5,
+   "range": [
+    3.5,
+    3.7
+   ]
+  },
+  {
+   "name": "Autumn Breeze",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 3.6,
+   "prev": 3.5,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "ab",
+    "autumn"
+   ],
+   "confidence": "medium",
+   "trades": 4,
+   "supply": 35,
+   "wanted": 15,
+   "range": [
+    3.5,
+    3.9
+   ]
+  },
+  {
+   "name": "Peppermint",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 3.5,
+   "prev": 3.1,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "low",
+   "trades": 1,
+   "supply": 14,
+   "wanted": 6,
+   "range": [
+    3.4,
+    3.6
+   ]
+  },
+  {
+   "name": "Stellar Glow",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 3.1,
+   "prev": 3,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "stellar"
+   ],
+   "confidence": "medium",
+   "trades": 3,
+   "supply": 31,
+   "wanted": 8,
+   "range": [
+    3.0,
+    3.1
+   ]
+  },
+  {
+   "name": "Frightlight",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 3.1,
+   "prev": 3,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "fright light",
+    "fright"
+   ],
+   "confidence": "medium",
+   "trades": 4,
+   "supply": 33,
+   "wanted": 7,
+   "range": [
+    3.0,
+    3.1
+   ]
+  },
+  {
+   "name": "Spirit Surge",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 2.9,
+   "prev": 3,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "ss"
+   ],
+   "confidence": "low",
+   "trades": 1,
+   "supply": 22,
+   "wanted": 4,
+   "range": [
+    2.9,
+    3.0
+   ]
+  },
+  {
+   "name": "Intergalactic Clouds",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 2.9,
+   "prev": 3,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "intergalactic",
+    "ic"
+   ],
+   "confidence": "medium",
+   "trades": 3,
+   "supply": 28,
+   "wanted": 5,
+   "range": [
+    2.9,
+    2.9
+   ]
+  },
+  {
+   "name": "Arctic Blast",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 2.8,
+   "prev": 3,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "artic blast"
+   ],
+   "confidence": "low",
+   "trades": 1,
+   "supply": 18,
+   "wanted": 2,
+   "range": [
+    2.8,
+    2.8
+   ]
+  },
+  {
+   "name": "Autumn Breeze Spawn",
+   "rarity": "legendary",
+   "type": "spawn",
+   "value": 2.7,
+   "prev": 2,
+   "demand": "high",
+   "estimate": true,
+   "plus": false,
+   "aliases": [
+    "ab spawn"
+   ],
+   "confidence": "low",
+   "trades": 1,
+   "supply": 6,
+   "wanted": 5,
+   "range": [
+    2.3,
+    2.9
+   ]
+  },
+  {
+   "name": "Lovebite",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 2.5,
+   "prev": 2.5,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "love bite"
+   ],
+   "confidence": "low",
+   "trades": 1,
+   "supply": 16,
+   "wanted": 4,
+   "range": [
+    2.5,
+    2.6
+   ]
+  },
+  {
+   "name": "Blizzard",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 2.4,
+   "prev": 2.5,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "medium",
+   "trades": 2,
+   "supply": 24,
+   "wanted": 3,
+   "range": [
+    2.4,
+    2.5
+   ]
+  },
+  {
+   "name": "Golden Harp",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 2.4,
+   "prev": 2.3,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "harp",
+    "golden larp"
+   ],
+   "confidence": "high",
+   "trades": 5,
+   "supply": 30,
+   "wanted": 7,
+   "range": [
+    2.4,
+    2.5
+   ]
+  },
+  {
+   "name": "Easter Basket",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 2.2,
+   "prev": 2.2,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "basket"
+   ],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 17,
+   "wanted": 3,
+   "range": [
+    2.2,
+    2.2
+   ]
+  },
+  {
+   "name": "Glitter",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 2.0,
+   "prev": 2,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "low",
+   "trades": 1,
+   "supply": 33,
+   "wanted": 6,
+   "range": [
+    1.9,
+    1.9
+   ]
+  },
+  {
+   "name": "Infernal Flare",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 1.9,
+   "prev": 2,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "infernal"
+   ],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 21,
+   "wanted": 3,
+   "range": [
+    1.9,
+    1.9
+   ]
+  },
+  {
+   "name": "Frightlight Spawn",
+   "rarity": "legendary",
+   "type": "spawn",
+   "value": 1.9,
+   "prev": 2,
+   "demand": "mid",
+   "estimate": true,
+   "plus": false,
+   "aliases": [
+    "fright spawn"
+   ],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 4,
+   "wanted": 0,
+   "range": [
+    1.9,
+    1.9
+   ]
+  },
+  {
+   "name": "Virulent Congregation",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 1.7,
+   "prev": 1.7,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "vc",
+    "virulent"
+   ],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 20,
+   "wanted": 4,
+   "range": [
+    1.7,
+    1.7
+   ]
+  },
+  {
+   "name": "Punktastic",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 1.6,
+   "prev": 1.6,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "medium",
+   "trades": 2,
+   "supply": 16,
+   "wanted": 5,
+   "range": [
+    1.5,
+    1.7
+   ]
+  },
+  {
+   "name": "Dreamcore",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 1.6,
+   "prev": 1.6,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "dream core"
+   ],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 14,
+   "wanted": 3,
+   "range": [
+    1.6,
+    1.6
+   ]
+  },
+  {
+   "name": "Groggy",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 1.5,
+   "prev": 1.5,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 11,
+   "wanted": 2,
+   "range": [
+    1.5,
+    1.5
+   ]
+  },
+  {
+   "name": "Crunchy Explosion",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 1.4,
+   "prev": 1.5,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "crunchy"
+   ],
+   "confidence": "medium",
+   "trades": 3,
+   "supply": 41,
+   "wanted": 5,
+   "range": [
+    1.3,
+    1.5
+   ]
+  },
+  {
+   "name": "Stellar Spawn",
+   "rarity": "legendary",
+   "type": "spawn",
+   "value": 1.4,
+   "prev": 1.5,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 7,
+   "wanted": 0,
+   "range": [
+    1.4,
+    1.4
+   ]
+  },
+  {
+   "name": "Arctic Spawn",
+   "rarity": "legendary",
+   "type": "spawn",
+   "value": 1.3,
+   "prev": 1.5,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "artic spawn"
+   ],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 11,
+   "wanted": 0,
+   "range": [
+    1.3,
+    1.3
+   ]
+  },
+  {
+   "name": "Dreamcore Spawn",
+   "rarity": "legendary",
+   "type": "spawn",
+   "value": 1.3,
+   "prev": 1,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "dream core spawn"
+   ],
+   "confidence": "low",
+   "trades": 1,
+   "supply": 4,
+   "wanted": 6,
+   "range": [
+    1.1,
+    1.3
+   ]
+  },
+  {
+   "name": "Pablo's Clownery",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 1.2,
+   "prev": 1.4,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "pablos clownery",
+    "pablo clownery",
+    "pablo",
+    "clownery"
+   ],
+   "confidence": "high",
+   "trades": 7,
+   "supply": 47,
+   "wanted": 6,
+   "range": [
+    1.2,
+    1.3
+   ]
+  },
+  {
+   "name": "Purple Rapture",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 1.2,
+   "prev": 1.3,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "rapture"
+   ],
+   "confidence": "medium",
+   "trades": 3,
+   "supply": 43,
+   "wanted": 4,
+   "range": [
+    1.2,
+    1.2
+   ]
+  },
+  {
+   "name": "Popstar Spectacle",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 1.1,
+   "prev": 1.2,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "popstar",
+    "popstar spactcle"
+   ],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 40,
+   "wanted": 6,
+   "range": [
+    1.1,
+    1.1
+   ]
+  },
+  {
+   "name": "Darkness",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 1.1,
+   "prev": 1.1,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "medium",
+   "trades": 4,
+   "supply": 39,
+   "wanted": 9,
+   "range": [
+    1.1,
+    1.1
+   ]
+  },
+  {
+   "name": "Spawntastic",
+   "rarity": "legendary",
+   "type": "spawn",
+   "value": 1.1,
+   "prev": 1,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 15,
+   "wanted": 5,
+   "range": [
+    1.1,
+    1.1
+   ]
+  },
+  {
+   "name": "Holy",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 0.95,
+   "prev": 1,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "high",
+   "trades": 5,
+   "supply": 41,
+   "wanted": 7,
+   "range": [
+    0.93,
+    0.96
+   ]
+  },
+  {
+   "name": "Toxic Puddle",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 0.83,
+   "prev": 0.9,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "toxic"
+   ],
+   "confidence": "medium",
+   "trades": 4,
+   "supply": 34,
+   "wanted": 5,
+   "range": [
+    0.82,
+    0.85
+   ]
+  },
+  {
+   "name": "Glass",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 0.78,
+   "prev": 0.8,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 19,
+   "wanted": 3,
+   "range": [
+    0.78,
+    0.78
+   ]
+  },
+  {
+   "name": "Slashes",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 0.75,
+   "prev": 0.8,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "medium",
+   "trades": 2,
+   "supply": 22,
+   "wanted": 4,
+   "range": [
+    0.72,
+    0.79
+   ]
+  },
+  {
+   "name": "Lightning",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 0.66,
+   "prev": 0.7,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "medium",
+   "trades": 2,
+   "supply": 27,
+   "wanted": 5,
+   "range": [
+    0.64,
+    0.7
+   ]
+  },
+  {
+   "name": "Abyss",
+   "rarity": "epic",
+   "type": "hit",
+   "value": 0.51,
+   "prev": 0.5,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 10,
+   "wanted": 2,
+   "range": [
+    0.51,
+    0.51
+   ]
+  },
+  {
+   "name": "Crimson Splash",
+   "rarity": "epic",
+   "type": "hit",
+   "value": 0.48,
+   "prev": 0.5,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "crimson"
+   ],
+   "confidence": "low",
+   "trades": 1,
+   "supply": 15,
+   "wanted": 2,
+   "range": [
+    0.48,
+    0.48
+   ]
+  },
+  {
+   "name": "Batty",
+   "rarity": "epic",
+   "type": "hit",
+   "value": 0.46,
+   "prev": 0.5,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 13,
+   "wanted": 1,
+   "range": [
+    0.46,
+    0.46
+   ]
+  },
+  {
+   "name": "Starfall",
+   "rarity": "epic",
+   "type": "hit",
+   "value": 0.34,
+   "prev": 0.3,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 6,
+   "wanted": 3,
+   "range": [
+    0.34,
+    0.34
+   ]
+  },
+  {
+   "name": "Northern Star",
+   "rarity": "epic",
+   "type": "hit",
+   "value": 0.3,
+   "prev": 0.3,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 7,
+   "wanted": 1,
+   "range": [
+    0.3,
+    0.3
+   ]
+  },
+  {
+   "name": "Bloxy Charms",
+   "rarity": "epic",
+   "type": "hit",
+   "value": 0.3,
+   "prev": 0.3,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "bloxy charm"
+   ],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 2,
+   "wanted": 1,
+   "range": [
+    0.3,
+    0.3
+   ]
+  },
+  {
+   "name": "Limited Epic",
+   "rarity": "epic",
+   "type": "hit",
+   "value": 0.2,
+   "prev": 0.2,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "limited epic",
+    "limited epics"
+   ],
+   "confidence": "low",
+   "trades": 0,
+   "supply": null,
+   "wanted": null,
+   "range": null
+  },
+  {
+   "name": "Regular Epic",
+   "rarity": "epic",
+   "type": "hit",
+   "value": 0.1,
+   "prev": 0.1,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "epic",
+    "epics"
+   ],
+   "confidence": "low",
+   "trades": 0,
+   "supply": null,
+   "wanted": null,
+   "range": null
+  }
+ ],
+ "trade_count": 65
+}

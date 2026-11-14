@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slap Battles Effect Values</title>
+<meta name="description" content="Slap Battles hit and spawn effect values worked out from real trades in the official Discord, with a Win/Fair/Lose trade calculator.">
+<meta property="og:title" content="Slap Battles Effect Values">
+<meta property="og:description" content="Trade-based values for every tradable Slap Battles effect, plus a W/F/L calculator.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👋</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Layout: value table on the left, sticky trade calculator on the right; stacks on phones */
+  --bg:#f3f1ec; --panel:#ffffff; --ink:#1d1a24; --muted:#6c6677; --line:#e2ddd3;
+  --accent:#e0457b; --accent-ink:#ffffff;
+  --mythic:#d93a3a; --legend:#d99a0b; --epic:#8b4fd6;
+  --win:#1f9d55; --fair:#2f7fd0; --lose:#d93a3a;
+  --chip:#ebe7df;
+  --display:"Lilita One","Arial Rounded MT Bold",system-ui,sans-serif;
+  --body:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#15131b; --panel:#1f1c27; --ink:#f2eff7; --muted:#a39dae; --line:#332e3e;
+  --accent:#ff5d93; --accent-ink:#1a0a11; --chip:#2a2634;
+  --mythic:#ff6464; --legend:#f4bd3c; --epic:#b083ff; --win:#3fcf7e; --fair:#5aa6f0; --lose:#ff6464;
+  color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#15131b; --panel:#1f1c27; --ink:#f2eff7; --muted:#a39dae; --line:#332e3e;
+  --accent:#ff5d93; --accent-ink:#1a0a11; --chip:#2a2634;
+  --mythic:#ff6464; --legend:#f4bd3c; --epic:#b083ff; --win:#3fcf7e; --fair:#5aa6f0; --lose:#ff6464;
+  color-scheme:dark;}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.45}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1240px;margin:0 auto;padding:20px 20px 48px}
+header{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:flex-end;justify-content:space-between;margin-bottom:16px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(28px,4.4vw,44px);line-height:1;margin:0;letter-spacing:.5px;text-wrap:balance}
+h1 .hand{display:inline-block;transform:rotate(-14deg);margin-right:6px}
+.sub{color:var(--muted);margin:6px 0 0;max-width:64ch}
+.meta{display:flex;gap:8px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:var(--chip);font-weight:700;font-size:13px;white-space:nowrap}
+.moverhead{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 6px}
+.movers{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px}
+.mv{display:flex;gap:6px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:6px 10px;font-size:13px;font-weight:700}
+.up{color:var(--win)} .down{color:var(--lose)}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 370px;gap:20px;align-items:start}
+@media (max-width:900px){.grid{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px}
+.controls{display:flex;flex-wrap:wrap;gap:10px;padding:12px;border-bottom:1px solid var(--line)}
+.search{flex:1 1 220px;min-width:0;display:flex;align-items:center;gap:8px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:0 10px}
+.search input{min-width:0;border:0;background:transparent;padding:9px 0;width:100%;outline:none}
+.seg{display:flex;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:3px;gap:2px}
+.seg button{border:0;background:transparent;padding:5px 10px;border-radius:7px;font-weight:700;font-size:13px;cursor:pointer;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--panel);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+select{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:6px 10px;font-weight:700;font-size:13px}
+.tablewrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+th{text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:800;padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+tr.row td:first-child{border-left:5px solid var(--r)}
+.name{font-weight:800}
+.nick{color:var(--muted);font-size:12px;font-weight:600}
+.tag{font-size:11px;font-weight:800;padding:2px 7px;border-radius:999px;margin-left:6px;vertical-align:1px;white-space:nowrap}
+.tag.spawn{background:color-mix(in srgb,var(--fair) 18%,transparent);color:var(--fair)}
+.tag.est{background:color-mix(in srgb,var(--legend) 22%,transparent);color:var(--ink)}
+.val{font-family:var(--display);font-size:20px;white-space:nowrap}
+.rar{font-size:12px;font-weight:800;color:var(--r);text-transform:uppercase;letter-spacing:.05em}
+.dem{font-size:12px;font-weight:800;padding:3px 8px;border-radius:999px;white-space:nowrap}
+.dem.high{background:color-mix(in srgb,var(--win) 18%,transparent);color:var(--win)}
+.dem.mid{background:var(--chip);color:var(--muted)}
+.dem.low{background:color-mix(in srgb,var(--lose) 15%,transparent);color:var(--lose)}
+.chg{font-weight:800;font-size:13px;white-space:nowrap}
+.conf{display:inline-flex;gap:3px;align-items:center;font-size:12px;font-weight:800;color:var(--muted);white-space:nowrap}
+.conf i{width:6px;height:12px;border-radius:2px;background:var(--line)}
+.conf.high i,.conf.medium i:nth-child(-n+2),.conf.low i:first-child{background:var(--fair)}
+.rng{display:block;font-size:11px;color:var(--muted);font-weight:700;white-space:nowrap}
+.sd{display:block;font-size:11px;color:var(--muted);font-weight:700;margin-top:3px;white-space:nowrap}
+.addbtns{display:flex;flex-direction:column;gap:4px;align-items:stretch}
+.addbtns button{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:4px 8px;font-size:12px;font-weight:800;cursor:pointer;white-space:nowrap}
+.addbtns button:hover{border-color:var(--accent);color:var(--accent)}
+.empty{padding:28px;text-align:center;color:var(--muted)}
+/* calculator */
+.calc{position:sticky;top:16px;padding:16px;display:grid;gap:14px}
+.calc h2{font-family:var(--display);font-weight:400;font-size:24px;margin:0}
+.side{display:grid;gap:8px}
+.side-head{display:flex;justify-content:space-between;align-items:baseline}
+.side-head b{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.side-head .tot{font-family:var(--display);font-size:20px}
+.items{display:grid;gap:6px;min-height:40px;padding:8px;border:1px dashed var(--line);border-radius:10px;background:var(--bg)}
+.items .hint{color:var(--muted);font-size:13px}
+.it{display:flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--r);border-radius:8px;padding:5px 8px;font-size:13px;font-weight:700}
+.it .n{flex:1;min-width:0}
+.qty{display:flex;align-items:center;gap:2px}
+.qty button{width:24px;height:24px;border:1px solid var(--line);background:var(--bg);border-radius:6px;cursor:pointer;font-weight:800;line-height:1}
+.qty span{min-width:20px;text-align:center}
+.rm{border:0;background:none;color:var(--muted);cursor:pointer;font-size:16px}
+.quick{display:flex;gap:6px}
+.quick input{flex:1;min-width:0;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:7px 9px;font-size:13px}
+.quick button,.primary{border:0;background:var(--accent);color:var(--accent-ink);border-radius:8px;padding:7px 12px;font-weight:800;cursor:pointer}
+.err{color:var(--lose);font-size:12px;min-height:0}
+.verdict{border-radius:12px;padding:12px 14px;display:grid;gap:8px;background:var(--chip)}
+.verdict .big{font-family:var(--display);font-size:30px;line-height:1}
+.verdict.WIN .big{color:var(--win)} .verdict.FAIR .big{color:var(--fair)} .verdict.LOSE .big{color:var(--lose)}
+.bar{height:10px;border-radius:999px;background:var(--line);display:flex;overflow:hidden}
+.bar i{display:block;height:100%}
+.vrow{display:flex;justify-content:space-between;gap:8px;font-size:13px;font-weight:700;color:var(--muted)}
+.ghost{border:1px solid var(--line);background:transparent;border-radius:8px;padding:6px 10px;font-weight:800;cursor:pointer;font-size:13px}
+.notes{margin-top:20px;padding:16px 18px;display:grid;gap:8px;max-width:none}
+.notes h2{font-family:var(--display);font-weight:400;font-size:22px;margin:0}
+.notes ul{margin:0;padding-left:18px;display:grid;gap:4px;max-width:90ch}
+.legend{display:flex;flex-wrap:wrap;gap:8px}
+.sw{display:inline-block;width:10px;height:10px;border-radius:3px;background:var(--r)}
+@media (max-width:560px){
+  .wrap{padding:16px}
+  .hide-sm{display:none}
+  td,th{padding:8px 6px}
+  .addbtns button{padding:3px 6px}
+  .val{font-size:17px}
+  .movers .nick{display:none}
+}
+@media (prefers-reduced-motion:no-preference){.it{animation:pop .18s ease-out}@keyframes pop{from{transform:scale(.96)}to{transform:none}}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1><span class="hand" aria-hidden="true">👋</span>Slap Battles Effect Values</h1>
+      <p class="sub">Hit and spawn effect values worked out from real trades, asks and bids in the official Slap Battles Discord's #trading and #high-trading channels. Values are in <b>legendaries</b>: ⭐ 1 is a typical legendary, so Hitman (⭐ 8.2) is worth about eight.</p>
+    </div>
+    <div class="meta">
+      <span class="pill" id="updated"></span>
+      <span class="pill" id="count"></span>
+    </div>
+  </header>
+
+  <div class="moverhead">Biggest differences from the community value list</div>
+  <div class="movers" id="movers" aria-label="Biggest differences from the community value list"></div>
+
+  <div class="grid">
+    <section class="card" aria-label="Value list">
+      <div class="controls">
+        <label class="search" for="q"><span aria-hidden="true">🔎</span><input id="q" type="search" placeholder="Search — nicknames work (purg, pande, egg, hex…)" autocomplete="off"></label>
+        <div class="seg" role="group" aria-label="Rarity" id="rar">
+          <button aria-pressed="true" data-v="">All</button>
+          <button aria-pressed="false" data-v="mythic">Mythic</button>
+          <button aria-pressed="false" data-v="legendary">Legendary</button>
+          <button aria-pressed="false" data-v="epic">Epic</button>
+        </div>
+        <div class="seg" role="group" aria-label="Effect type" id="typ">
+          <button aria-pressed="true" data-v="">Hit + Spawn</button>
+          <button aria-pressed="false" data-v="hit">Hit</button>
+          <button aria-pressed="false" data-v="spawn">Spawn</button>
+        </div>
+        <select id="sort" aria-label="Sort">
+          <option value="vd">Value: high → low</option>
+          <option value="va">Value: low → high</option>
+          <option value="ch">Biggest difference vs list</option>
+          <option value="cf">Confidence</option>
+          <option value="dm">Demand</option>
+          <option value="nm">Name A–Z</option>
+        </select>
+      </div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Effect</th><th class="hide-sm">Rarity</th><th>Value</th><th>Demand</th><th class="hide-sm">Confidence</th><th class="hide-sm" title="Compared with the community Weekly Value List (Nov 9)">vs list</th><th><span class="hide-sm">Trade</span></th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <aside class="card calc" aria-label="Trade calculator">
+      <h2>W / F / L calculator</h2>
+      <div class="side">
+        <div class="side-head"><b>You give</b><span class="tot" id="tg">⭐ 0</span></div>
+        <div class="items" id="give"></div>
+        <form class="quick" data-side="give"><input id="qg" placeholder="e.g. 2x hitman, glitter" aria-label="Type effects you give"><button>Add</button></form>
+      </div>
+      <div class="side">
+        <div class="side-head"><b>You get</b><span class="tot" id="tt">⭐ 0</span></div>
+        <div class="items" id="get"></div>
+        <form class="quick" data-side="get"><input id="qt" placeholder="e.g. jack o lantern" aria-label="Type effects you get"><button>Add</button></form>
+      </div>
+      <div class="err" id="err" role="status"></div>
+      <div class="verdict" id="verdict"></div>
+      <button class="ghost" id="clear" type="button">Clear trade</button>
+    </aside>
+  </div>
+
+  <section class="card notes">
+    <h2>How these values work</h2>
+    <div class="legend">
+      <span class="pill" style="--r:var(--mythic)"><span class="sw"></span>Mythic</span>
+      <span class="pill" style="--r:var(--legend)"><span class="sw"></span>Legendary</span>
+      <span class="pill" style="--r:var(--epic)"><span class="sw"></span>Epic</span>
+      <span class="dem high">High demand</span><span class="dem mid">Mid demand</span><span class="dem low">Low demand</span>
+    </div>
+    <ul id="notes"></ul>
+  </section>
+</div>
+
+<script id="data" type="application/json">{
+ "updated": "2026-11-14",
+ "unit": "Legendary value (1 = a typical legendary)",
+ "method": "Fitted from 65 trades, asks and bids read in #trading and #high-trading (official Slap Battles Discord) between Nov 12 and Nov 14, 2026, plus how many players were offering vs. looking for each effect. The community Weekly Value List (Nov 9) is only a light anchor for effects with little trade evidence.",
+ "source": "#trading + #high-trading: 2,575 messages, 533 unique posts, ~200 traders, Nov 12–14 2026",
+ "notes": [
+  "Confidence: high = 5+ trades and stable when any single trader is left out; low = few or no trades, so the value leans on the community list and supply/demand.",
+  "Supply / wanted = how many different players were offering vs. looking for the effect over the two days.",
+  "Rares, uncommons and cat/special effects aren't valued; they're treated as ~0 in trades.",
+  "Business Man effects can't be traded."
+ ],
+ "effects": [
+  {
+   "name": "Purgatory",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 221,
+   "prev": 195,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "purg",
+    "purga"
+   ],
+   "confidence": "medium",
+   "trades": 3,
+   "supply": 15,
+   "wanted": 17,
+   "range": [
+    205,
+    232
+   ]
+  },
+  {
+   "name": "Saint Marked",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 200,
+   "prev": 197,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "saint"
+   ],
+   "confidence": "medium",
+   "trades": 2,
+   "supply": 25,
+   "wanted": 9,
+   "range": [
+    196,
+    203
+   ]
+  },
+  {
+   "name": "Damned",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 182,
+   "prev": 160,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "medium",
+   "trades": 2,
+   "supply": 17,
+   "wanted": 11,
+   "range": [
+    173,
+    189
+   ]
+  },
+  {
+   "name": "Necrobloxicon",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 112,
+   "prev": 108,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "necro"
+   ],
+   "confidence": "high",
+   "trades": 8,
+   "supply": 22,
+   "wanted": 22,
+   "range": [
+    110,
+    116
+   ]
+  },
+  {
+   "name": "Easter Eggtravaganza",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 110,
+   "prev": 125,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "egg",
+    "eggtravaganza",
+    "easter extravaganza",
+    "eggstravaganza"
+   ],
+   "confidence": "medium",
+   "trades": 3,
+   "supply": 15,
+   "wanted": 6,
+   "range": [
+    107,
+    115
+   ]
+  },
+  {
+   "name": "Pandecrownium",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 99,
+   "prev": 98,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "pande",
+    "pandecrowium"
+   ],
+   "confidence": "high",
+   "trades": 8,
+   "supply": 24,
+   "wanted": 21,
+   "range": [
+    97,
+    103
+   ]
+  },
+  {
+   "name": "Purgatory Spawn",
+   "rarity": "mythic",
+   "type": "spawn",
+   "value": 98,
+   "prev": 90,
+   "demand": "high",
+   "estimate": true,
+   "plus": false,
+   "aliases": [
+    "purg spawn"
+   ],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 5,
+   "wanted": 5,
+   "range": [
+    98,
+    98
+   ]
+  },
+  {
+   "name": "Haloheart",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 76,
+   "prev": 76,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "halo heart",
+    "halo"
+   ],
+   "confidence": "medium",
+   "trades": 2,
+   "supply": 18,
+   "wanted": 11,
+   "range": [
+    76,
+    79
+   ]
+  },
+  {
+   "name": "Dodecanado",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 57,
+   "prev": 63,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "dodeca"
+   ],
+   "confidence": "high",
+   "trades": 7,
+   "supply": 24,
+   "wanted": 5,
+   "range": [
+    55,
+    61
+   ]
+  },
+  {
+   "name": "Winter Wonderland",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 54,
+   "prev": 68,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "ww"
+   ],
+   "confidence": "high",
+   "trades": 10,
+   "supply": 23,
+   "wanted": 2,
+   "range": [
+    53,
+    57
+   ]
+  },
+  {
+   "name": "Enchanted",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 50,
+   "prev": 48,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "high",
+   "trades": 10,
+   "supply": 32,
+   "wanted": 11,
+   "range": [
+    48.5,
+    52
+   ]
+  },
+  {
+   "name": "Relude",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 44.0,
+   "prev": 43,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "high",
+   "trades": 5,
+   "supply": 30,
+   "wanted": 19,
+   "range": [
+    42.5,
+    45.0
+   ]
+  },
+  {
+   "name": "Winter Blessed Spawn",
+   "rarity": "mythic",
+   "type": "spawn",
+   "value": 31.5,
+   "prev": 32,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "winter blessed",
+    "wbs"
+   ],
+   "confidence": "medium",
+   "trades": 3,
+   "supply": 15,
+   "wanted": 5,
+   "range": [
+    31.0,
+    32.0
+   ]
+  },
+  {
+   "name": "Boombox",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 28.0,
+   "prev": 26,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "bb"
+   ],
+   "confidence": "high",
+   "trades": 5,
+   "supply": 13,
+   "wanted": 19,
+   "range": [
+    28.0,
+    28.0
+   ]
+  },
+  {
+   "name": "Barzilian Nexus",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 18.5,
+   "prev": 22,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "brazilian nexus",
+    "barzillian nexus",
+    "nexus",
+    "barz"
+   ],
+   "confidence": "medium",
+   "trades": 13,
+   "supply": 64,
+   "wanted": 18,
+   "range": [
+    17.0,
+    22.5
+   ]
+  },
+  {
+   "name": "Boombox Spawn",
+   "rarity": "mythic",
+   "type": "spawn",
+   "value": 16.5,
+   "prev": 14,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "bb spawn"
+   ],
+   "confidence": "medium",
+   "trades": 2,
+   "supply": 11,
+   "wanted": 4,
+   "range": [
+    14.0,
+    18.5
+   ]
+  },
+  {
+   "name": "Hellfire Sigil",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 15.0,
+   "prev": 18,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "hellfire",
+    "sigil"
+   ],
+   "confidence": "medium",
+   "trades": 12,
+   "supply": 54,
+   "wanted": 13,
+   "range": [
+    14.0,
+    16.0
+   ]
+  },
+  {
+   "name": "Portal",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 12.5,
+   "prev": 12,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "medium",
+   "trades": 9,
+   "supply": 49,
+   "wanted": 14,
+   "range": [
+    11.0,
+    13.0
+   ]
+  },
+  {
+   "name": "Energized",
+   "rarity": "mythic",
+   "type": "hit",
+   "value": 11.0,
+   "prev": 12,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "high",
+   "trades": 9,
+   "supply": 40,
+   "wanted": 6,
+   "range": [
+    10.5,
+    11.0
+   ]
+  },
+  {
+   "name": "Approaching Storm",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 11.0,
+   "prev": 10,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "storm",
+    "as"
+   ],
+   "confidence": "medium",
+   "trades": 2,
+   "supply": 22,
+   "wanted": 9,
+   "range": [
+    10.5,
+    11.0
+   ]
+  },
+  {
+   "name": "Jack O Lantern",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 10.5,
+   "prev": 8,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "jack-o-lantern",
+    "jol",
+    "jack o' lantern",
+    "jack"
+   ],
+   "confidence": "medium",
+   "trades": 6,
+   "supply": 23,
+   "wanted": 6,
+   "range": [
+    9.1,
+    11.5
+   ]
+  },
+  {
+   "name": "Hitman",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 8.2,
+   "prev": 8,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "high",
+   "trades": 6,
+   "supply": 33,
+   "wanted": 9,
+   "range": [
+    7.9,
+    8.7
+   ]
+  },
+  {
+   "name": "Eerie Fog",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 6.1,
+   "prev": 6.5,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "eerie"
+   ],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 24,
+   "wanted": 3,
+   "range": [
+    6.1,
+    6.1
+   ]
+  },
+  {
+   "name": "Demonic Hex",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 4.6,
+   "prev": 4.5,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "hex"
+   ],
+   "confidence": "medium",
+   "trades": 3,
+   "supply": 26,
+   "wanted": 11,
+   "range": [
+    4.5,
+    4.7
+   ]
+  },
+  {
+   "name": "Sacred",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 3.7,
+   "prev": 3.3,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "low",
+   "trades": 1,
+   "supply": 15,
+   "wanted": 5,
+   "range": [
+    3.5,
+    3.7
+   ]
+  },
+  {
+   "name": "Autumn Breeze",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 3.6,
+   "prev": 3.5,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "ab",
+    "autumn"
+   ],
+   "confidence": "medium",
+   "trades": 4,
+   "supply": 35,
+   "wanted": 15,
+   "range": [
+    3.5,
+    3.9
+   ]
+  },
+  {
+   "name": "Peppermint",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 3.5,
+   "prev": 3.1,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "low",
+   "trades": 1,
+   "supply": 14,
+   "wanted": 6,
+   "range": [
+    3.4,
+    3.6
+   ]
+  },
+  {
+   "name": "Stellar Glow",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 3.1,
+   "prev": 3,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "stellar"
+   ],
+   "confidence": "medium",
+   "trades": 3,
+   "supply": 31,
+   "wanted": 8,
+   "range": [
+    3.0,
+    3.1
+   ]
+  },
+  {
+   "name": "Frightlight",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 3.1,
+   "prev": 3,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "fright light",
+    "fright"
+   ],
+   "confidence": "medium",
+   "trades": 4,
+   "supply": 33,
+   "wanted": 7,
+   "range": [
+    3.0,
+    3.1
+   ]
+  },
+  {
+   "name": "Spirit Surge",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 2.9,
+   "prev": 3,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "ss"
+   ],
+   "confidence": "low",
+   "trades": 1,
+   "supply": 22,
+   "wanted": 4,
+   "range": [
+    2.9,
+    3.0
+   ]
+  },
+  {
+   "name": "Intergalactic Clouds",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 2.9,
+   "prev": 3,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "intergalactic",
+    "ic"
+   ],
+   "confidence": "medium",
+   "trades": 3,
+   "supply": 28,
+   "wanted": 5,
+   "range": [
+    2.9,
+    2.9
+   ]
+  },
+  {
+   "name": "Arctic Blast",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 2.8,
+   "prev": 3,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "artic blast"
+   ],
+   "confidence": "low",
+   "trades": 1,
+   "supply": 18,
+   "wanted": 2,
+   "range": [
+    2.8,
+    2.8
+   ]
+  },
+  {
+   "name": "Autumn Breeze Spawn",
+   "rarity": "legendary",
+   "type": "spawn",
+   "value": 2.7,
+   "prev": 2,
+   "demand": "high",
+   "estimate": true,
+   "plus": false,
+   "aliases": [
+    "ab spawn"
+   ],
+   "confidence": "low",
+   "trades": 1,
+   "supply": 6,
+   "wanted": 5,
+   "range": [
+    2.3,
+    2.9
+   ]
+  },
+  {
+   "name": "Lovebite",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 2.5,
+   "prev": 2.5,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "love bite"
+   ],
+   "confidence": "low",
+   "trades": 1,
+   "supply": 16,
+   "wanted": 4,
+   "range": [
+    2.5,
+    2.6
+   ]
+  },
+  {
+   "name": "Blizzard",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 2.4,
+   "prev": 2.5,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "medium",
+   "trades": 2,
+   "supply": 24,
+   "wanted": 3,
+   "range": [
+    2.4,
+    2.5
+   ]
+  },
+  {
+   "name": "Golden Harp",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 2.4,
+   "prev": 2.3,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "harp",
+    "golden larp"
+   ],
+   "confidence": "high",
+   "trades": 5,
+   "supply": 30,
+   "wanted": 7,
+   "range": [
+    2.4,
+    2.5
+   ]
+  },
+  {
+   "name": "Easter Basket",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 2.2,
+   "prev": 2.2,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "basket"
+   ],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 17,
+   "wanted": 3,
+   "range": [
+    2.2,
+    2.2
+   ]
+  },
+  {
+   "name": "Glitter",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 2.0,
+   "prev": 2,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "low",
+   "trades": 1,
+   "supply": 33,
+   "wanted": 6,
+   "range": [
+    1.9,
+    1.9
+   ]
+  },
+  {
+   "name": "Infernal Flare",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 1.9,
+   "prev": 2,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "infernal"
+   ],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 21,
+   "wanted": 3,
+   "range": [
+    1.9,
+    1.9
+   ]
+  },
+  {
+   "name": "Frightlight Spawn",
+   "rarity": "legendary",
+   "type": "spawn",
+   "value": 1.9,
+   "prev": 2,
+   "demand": "mid",
+   "estimate": true,
+   "plus": false,
+   "aliases": [
+    "fright spawn"
+   ],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 4,
+   "wanted": 0,
+   "range": [
+    1.9,
+    1.9
+   ]
+  },
+  {
+   "name": "Virulent Congregation",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 1.7,
+   "prev": 1.7,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "vc",
+    "virulent"
+   ],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 20,
+   "wanted": 4,
+   "range": [
+    1.7,
+    1.7
+   ]
+  },
+  {
+   "name": "Punktastic",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 1.6,
+   "prev": 1.6,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "medium",
+   "trades": 2,
+   "supply": 16,
+   "wanted": 5,
+   "range": [
+    1.5,
+    1.7
+   ]
+  },
+  {
+   "name": "Dreamcore",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 1.6,
+   "prev": 1.6,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "dream core"
+   ],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 14,
+   "wanted": 3,
+   "range": [
+    1.6,
+    1.6
+   ]
+  },
+  {
+   "name": "Groggy",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 1.5,
+   "prev": 1.5,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 11,
+   "wanted": 2,
+   "range": [
+    1.5,
+    1.5
+   ]
+  },
+  {
+   "name": "Crunchy Explosion",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 1.4,
+   "prev": 1.5,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "crunchy"
+   ],
+   "confidence": "medium",
+   "trades": 3,
+   "supply": 41,
+   "wanted": 5,
+   "range": [
+    1.3,
+    1.5
+   ]
+  },
+  {
+   "name": "Stellar Spawn",
+   "rarity": "legendary",
+   "type": "spawn",
+   "value": 1.4,
+   "prev": 1.5,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 7,
+   "wanted": 0,
+   "range": [
+    1.4,
+    1.4
+   ]
+  },
+  {
+   "name": "Arctic Spawn",
+   "rarity": "legendary",
+   "type": "spawn",
+   "value": 1.3,
+   "prev": 1.5,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "artic spawn"
+   ],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 11,
+   "wanted": 0,
+   "range": [
+    1.3,
+    1.3
+   ]
+  },
+  {
+   "name": "Dreamcore Spawn",
+   "rarity": "legendary",
+   "type": "spawn",
+   "value": 1.3,
+   "prev": 1,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "dream core spawn"
+   ],
+   "confidence": "low",
+   "trades": 1,
+   "supply": 4,
+   "wanted": 6,
+   "range": [
+    1.1,
+    1.3
+   ]
+  },
+  {
+   "name": "Pablo's Clownery",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 1.2,
+   "prev": 1.4,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "pablos clownery",
+    "pablo clownery",
+    "pablo",
+    "clownery"
+   ],
+   "confidence": "high",
+   "trades": 7,
+   "supply": 47,
+   "wanted": 6,
+   "range": [
+    1.2,
+    1.3
+   ]
+  },
+  {
+   "name": "Purple Rapture",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 1.2,
+   "prev": 1.3,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "rapture"
+   ],
+   "confidence": "medium",
+   "trades": 3,
+   "supply": 43,
+   "wanted": 4,
+   "range": [
+    1.2,
+    1.2
+   ]
+  },
+  {
+   "name": "Popstar Spectacle",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 1.1,
+   "prev": 1.2,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "popstar",
+    "popstar spactcle"
+   ],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 40,
+   "wanted": 6,
+   "range": [
+    1.1,
+    1.1
+   ]
+  },
+  {
+   "name": "Darkness",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 1.1,
+   "prev": 1.1,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "medium",
+   "trades": 4,
+   "supply": 39,
+   "wanted": 9,
+   "range": [
+    1.1,
+    1.1
+   ]
+  },
+  {
+   "name": "Spawntastic",
+   "rarity": "legendary",
+   "type": "spawn",
+   "value": 1.1,
+   "prev": 1,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 15,
+   "wanted": 5,
+   "range": [
+    1.1,
+    1.1
+   ]
+  },
+  {
+   "name": "Holy",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 0.95,
+   "prev": 1,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "high",
+   "trades": 5,
+   "supply": 41,
+   "wanted": 7,
+   "range": [
+    0.93,
+    0.96
+   ]
+  },
+  {
+   "name": "Toxic Puddle",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 0.83,
+   "prev": 0.9,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "toxic"
+   ],
+   "confidence": "medium",
+   "trades": 4,
+   "supply": 34,
+   "wanted": 5,
+   "range": [
+    0.82,
+    0.85
+   ]
+  },
+  {
+   "name": "Glass",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 0.78,
+   "prev": 0.8,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 19,
+   "wanted": 3,
+   "range": [
+    0.78,
+    0.78
+   ]
+  },
+  {
+   "name": "Slashes",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 0.75,
+   "prev": 0.8,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "medium",
+   "trades": 2,
+   "supply": 22,
+   "wanted": 4,
+   "range": [
+    0.72,
+    0.79
+   ]
+  },
+  {
+   "name": "Lightning",
+   "rarity": "legendary",
+   "type": "hit",
+   "value": 0.66,
+   "prev": 0.7,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "medium",
+   "trades": 2,
+   "supply": 27,
+   "wanted": 5,
+   "range": [
+    0.64,
+    0.7
+   ]
+  },
+  {
+   "name": "Abyss",
+   "rarity": "epic",
+   "type": "hit",
+   "value": 0.51,
+   "prev": 0.5,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 10,
+   "wanted": 2,
+   "range": [
+    0.51,
+    0.51
+   ]
+  },
+  {
+   "name": "Crimson Splash",
+   "rarity": "epic",
+   "type": "hit",
+   "value": 0.48,
+   "prev": 0.5,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "crimson"
+   ],
+   "confidence": "low",
+   "trades": 1,
+   "supply": 15,
+   "wanted": 2,
+   "range": [
+    0.48,
+    0.48
+   ]
+  },
+  {
+   "name": "Batty",
+   "rarity": "epic",
+   "type": "hit",
+   "value": 0.46,
+   "prev": 0.5,
+   "demand": "low",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 13,
+   "wanted": 1,
+   "range": [
+    0.46,
+    0.46
+   ]
+  },
+  {
+   "name": "Starfall",
+   "rarity": "epic",
+   "type": "hit",
+   "value": 0.34,
+   "prev": 0.3,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 6,
+   "wanted": 3,
+   "range": [
+    0.34,
+    0.34
+   ]
+  },
+  {
+   "name": "Northern Star",
+   "rarity": "epic",
+   "type": "hit",
+   "value": 0.3,
+   "prev": 0.3,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 7,
+   "wanted": 1,
+   "range": [
+    0.3,
+    0.3
+   ]
+  },
+  {
+   "name": "Bloxy Charms",
+   "rarity": "epic",
+   "type": "hit",
+   "value": 0.3,
+   "prev": 0.3,
+   "demand": "high",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "bloxy charm"
+   ],
+   "confidence": "low",
+   "trades": 0,
+   "supply": 2,
+   "wanted": 1,
+   "range": [
+    0.3,
+    0.3
+   ]
+  },
+  {
+   "name": "Limited Epic",
+   "rarity": "epic",
+   "type": "hit",
+   "value": 0.2,
+   "prev": 0.2,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "limited epic",
+    "limited epics"
+   ],
+   "confidence": "low",
+   "trades": 0,
+   "supply": null,
+   "wanted": null,
+   "range": null
+  },
+  {
+   "name": "Regular Epic",
+   "rarity": "epic",
+   "type": "hit",
+   "value": 0.1,
+   "prev": 0.1,
+   "demand": "mid",
+   "estimate": false,
+   "plus": false,
+   "aliases": [
+    "epic",
+    "epics"
+   ],
+   "confidence": "low",
+   "trades": 0,
+   "supply": null,
+   "wanted": null,
+   "range": null
+  }
+ ],
+ "trade_count": 65
+}</script>
+<script>
+(async () => {
+let DATA = JSON.parse(document.getElementById('data').textContent);
+// On a real host (GitHub Pages), load the latest values.json next to this page; fall back to the built-in copy.
+try { const r = await fetch('values.json', {cache: 'no-store'}); if (r.ok) { const j = await r.json(); if (j && j.effects) DATA = j; } } catch (e) {}
+const FX = DATA.effects;
+const RVAR = {mythic:'var(--mythic)', legendary:'var(--legend)', epic:'var(--epic)'};
+const RORD = {mythic:0, legendary:1, epic:2};
+const CORD = {high:0, medium:1, low:2};
+const confHtml = c => `<span class="conf ${c}" title="${c==='high'?'5+ trades, stable':c==='medium'?'some trade evidence':'little trade evidence; leans on community list + supply/demand'}"><i></i><i></i><i></i> ${c[0].toUpperCase()+c.slice(1)}</span>`;
+const DORD = {high:0, mid:1, low:2};
+const norm = s => s.toLowerCase().replace(/[’]/g,"'").replace(/[^a-z0-9' ]+/g,' ').replace(/\s+/g,' ').trim();
+const keyMap = new Map();
+FX.forEach(e => { keyMap.set(norm(e.name), e); (e.aliases||[]).forEach(a => { if(!keyMap.has(norm(a))) keyMap.set(norm(a), e); }); });
+const fmt = e => (+e.value).toString() + (e.plus ? '+' : '');
+const pct = e => (e.prev == null || e.prev === e.value) ? 0 : (e.value - e.prev) / e.prev * 100;
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function lev(a,b){const m=a.length,n=b.length;if(!m)return n;if(!n)return m;let p=Array.from({length:n+1},(_,j)=>j);for(let i=1;i<=m;i++){const c=[i];for(let j=1;j<=n;j++)c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));p=c}return p[n]}
+function find(q){
+  q = norm(q); if(!q) return null;
+  if(keyMap.has(q)) return keyMap.get(q);
+  const starts = FX.filter(e => norm(e.name).startsWith(q));
+  if(starts.length === 1) return starts[0];
+  let best=null, bd=1e9;
+  for(const [k,e] of keyMap){ const d = lev(q,k); const r = d / Math.max(q.length,k.length); if(r < 0.25 && d < bd){bd=d;best=e;} }
+  return best;
+}
+function matches(e,q){ q=norm(q); if(!q) return true; return norm(e.name).includes(q) || (e.aliases||[]).some(a=>norm(a).includes(q)) || find(q)===e; }
+
+// ---------- header ----------
+document.getElementById('updated').textContent = 'Trades read through ' + new Date(DATA.updated+'T12:00:00').toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'});
+document.getElementById('count').textContent = FX.length + ' effects · ' + DATA.trade_count + ' trades read';
+const movers = FX.filter(e => pct(e) && e.confidence!=='low').sort((a,b)=>Math.abs(pct(b))-Math.abs(pct(a))).slice(0,6);
+document.getElementById('movers').innerHTML = movers.map(e => {
+  const p = pct(e); return `<span class="mv" style="--r:${RVAR[e.rarity]}"><span class="sw"></span>${esc(e.name)} <span class="${p>0?'up':'down'}">${p>0?'▲':'▼'} ${Math.abs(p).toFixed(0)}%</span><span class="nick">list ${e.prev} → trades ${fmt(e)}</span></span>`;
+}).join('');
+document.getElementById('notes').innerHTML = [
+  esc(DATA.method),
+  'How the trades are read: an ask people keep reposting with no takers shows the wanted effect is worth <i>more</i> than the offer; a trade someone says went through counts most; “+ adds” counts as about 10–15% extra.',
+  '“vs list” compares each value with the community Weekly Effect Value List (Nov 9) in #trading-info.',
+  'Effects marked <span class="tag est">est.</span> are new Halloween effects with too few trades to pin down yet.',
+  ...DATA.notes.map(esc),
+  'The calculator calls a trade <b>fair</b> when the two sides are within 10% of each other. Demand still matters: a high-demand effect can fetch a small overpay.',
+].map(s=>`<li>${s}</li>`).join('');
+
+// ---------- table ----------
+const state = {q:'', rar:'', typ:'', sort:'vd'};
+const rows = document.getElementById('rows');
+function render(){
+  let list = FX.filter(e => (!state.rar||e.rarity===state.rar) && (!state.typ||e.type===state.typ) && matches(e,state.q));
+  const s = state.sort;
+  list.sort((a,b)=> s==='va' ? a.value-b.value : s==='nm' ? a.name.localeCompare(b.name) : s==='ch' ? Math.abs(pct(b))-Math.abs(pct(a)) || b.value-a.value : s==='dm' ? DORD[a.demand]-DORD[b.demand] || b.value-a.value : s==='cf' ? CORD[a.confidence]-CORD[b.confidence] || b.value-a.value : b.value-a.value);
+  if(!list.length){ rows.innerHTML = `<tr><td colspan="7" class="empty">No effect matches “${esc(state.q)}”. Rares, uncommons and cat/special effects aren’t on the value list.</td></tr>`; return; }
+  rows.innerHTML = list.map(e => {
+    const p = pct(e);
+    const chg = p ? `<span class="chg ${p>0?'up':'down'}">${p>0?'▲':'▼'} ${Math.abs(p).toFixed(0)}%</span>` : '<span class="nick">—</span>';
+    const i = FX.indexOf(e);
+    return `<tr class="row" style="--r:${RVAR[e.rarity]}">
+      <td><span class="name">${esc(e.name)}</span>${e.type==='spawn'?'<span class="tag spawn">spawn</span>':''}${e.estimate?'<span class="tag est">est.</span>':''}
+        ${e.aliases && e.aliases.length ? `<div class="nick">${esc(e.aliases.slice(0,3).join(' · '))}</div>`:''}</td>
+      <td class="hide-sm"><span class="rar">${e.rarity}</span></td>
+      <td><span class="val">⭐ ${fmt(e)}</span>${e.trades && e.range && e.range[0]!==e.range[1] ? `<span class="rng">range ${e.range[0]}–${e.range[1]}</span>`:''}</td>
+      <td><span class="dem ${e.demand}">${e.demand==='mid'?'Mid':e.demand==='high'?'High':'Low'}</span>${e.supply!=null?`<span class="sd" title="Different players offering it vs looking for it, Nov 12–14">${e.supply} offering · ${e.wanted} want</span>`:''}</td>
+      <td class="hide-sm">${confHtml(e.confidence)}<span class="sd">${e.trades||0} trade${e.trades===1?'':'s'}</span></td>
+      <td class="hide-sm">${chg}</td>
+      <td><div class="addbtns"><button data-i="${i}" data-s="give" aria-label="Add ${esc(e.name)} to what you give">+ Give</button><button data-i="${i}" data-s="get" aria-label="Add ${esc(e.name)} to what you get">+ Get</button></div></td>
+    </tr>`;
+  }).join('');
+}
+document.getElementById('q').addEventListener('input', ev => { state.q = ev.target.value; render(); });
+for (const id of ['rar','typ']) document.getElementById(id).addEventListener('click', ev => {
+  const b = ev.target.closest('button'); if(!b) return;
+  ev.currentTarget.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x===b));
+  state[id] = b.dataset.v; render();
+});
+document.getElementById('sort').addEventListener('change', ev => { state.sort = ev.target.value; render(); });
+rows.addEventListener('click', ev => { const b = ev.target.closest('button[data-i]'); if(b) add(b.dataset.s, FX[+b.dataset.i], 1); });
+
+// ---------- calculator ----------
+const trade = {give:new Map(), get:new Map()};
+function add(side, e, q){ trade[side].set(e, (trade[side].get(e)||0) + q); calc(); }
+function total(side){ let t=0; trade[side].forEach((q,e)=>t+=e.value*q); return Math.round(t*100)/100; }
+function parse(text){
+  const items=[], unknown=[];
+  text.split(/[,+\/&\n]|\band\b/i).map(s=>s.trim()).filter(Boolean).forEach(part=>{
+    let q=1, m;
+    if((m = part.match(/^(\d+)\s*x?\s+(.*)$/i) || part.match(/^(\d+)x(.*)$/i))){ q=+m[1]; part=m[2]; }
+    else if((m = part.match(/^(.*?)\s*(?:x\s*(\d+)|\((\d+)x?\))$/i)) && (m[2]||m[3])){ q=+(m[2]||m[3]); part=m[1]; }
+    const e = find(part); e ? items.push([e,q]) : unknown.push(part.trim());
+  });
+  return {items, unknown};
+}
+document.querySelectorAll('form.quick').forEach(f => f.addEventListener('submit', ev => {
+  ev.preventDefault();
+  const inp = f.querySelector('input'); const r = parse(inp.value);
+  r.items.forEach(([e,q]) => add(f.dataset.side, e, q));
+  document.getElementById('err').textContent = r.unknown.length ? `Not on the list: ${r.unknown.join(', ')}. Check the spelling, or it may be an unvalued rare/uncommon.` : '';
+  inp.value = r.unknown.join(', ');
+}));
+function drawSide(side){
+  const box = document.getElementById(side);
+  if(!trade[side].size){ box.innerHTML = `<span class="hint">Use “+ ${side==='give'?'Give':'Get'}” in the list, or type below.</span>`; return; }
+  box.innerHTML = [...trade[side]].map(([e,q],i)=>`<div class="it" style="--r:${RVAR[e.rarity]}"><span class="n">${esc(e.name)} <span class="nick">⭐ ${fmt(e)}</span></span>
+    <span class="qty"><button data-a="-" data-k="${i}" aria-label="One less ${esc(e.name)}">−</button><span>${q}</span><button data-a="+" data-k="${i}" aria-label="One more ${esc(e.name)}">+</button></span>
+    <button class="rm" data-a="x" data-k="${i}" aria-label="Remove ${esc(e.name)}">×</button></div>`).join('');
+}
+['give','get'].forEach(side => document.getElementById(side).addEventListener('click', ev => {
+  const b = ev.target.closest('button[data-a]'); if(!b) return;
+  const e = [...trade[side].keys()][+b.dataset.k]; const q = trade[side].get(e);
+  if(b.dataset.a==='+') trade[side].set(e,q+1);
+  else if(b.dataset.a==='-' && q>1) trade[side].set(e,q-1);
+  else trade[side].delete(e);
+  calc();
+}));
+document.getElementById('clear').addEventListener('click', () => { trade.give.clear(); trade.get.clear(); document.getElementById('err').textContent=''; calc(); });
+function calc(){
+  drawSide('give'); drawSide('get');
+  const g = total('give'), t = total('get');
+  document.getElementById('tg').textContent = '⭐ ' + g; document.getElementById('tt').textContent = '⭐ ' + t;
+  const v = document.getElementById('verdict');
+  if(!g && !t){ v.className='verdict'; v.innerHTML = '<div class="vrow">Add effects to both sides to see if it’s a win, fair or a loss.</div>'; return; }
+  const big = Math.max(g,t) || 1, diff = Math.round((t-g)*100)/100;
+  const verdict = Math.abs(diff) <= 0.10*big ? 'FAIR' : diff > 0 ? 'WIN' : 'LOSE';
+  const word = {WIN:'You win', FAIR:'Fair trade', LOSE:'You lose'}[verdict];
+  const est = [...trade.give.keys(), ...trade.get.keys()].some(e=>e.estimate);
+  const gp = g/(g+t||1)*100;
+  v.className = 'verdict ' + verdict;
+  v.innerHTML = `<div class="big">${word}</div>
+    <div class="bar" aria-hidden="true"><i style="width:${gp}%;background:var(--lose)"></i><i style="width:${100-gp}%;background:var(--win)"></i></div>
+    <div class="vrow"><span>Give ⭐ ${g}</span><span>${diff>=0?'+':''}${diff} for you</span><span>Get ⭐ ${t}</span></div>
+    ${est?'<div class="vrow">Includes an estimated Halloween value, so treat this as a rough guide.</div>':''}`;
+}
+// open in a realistic state: a real offer from #high-trading (Nov 14)
+[['Barzilian Nexus',1],['Autumn Breeze',1],['Darkness',1]].forEach(([n,q])=>add('give', find(n), q));
+add('get', find('Boombox'), 1);
+render();
+})();
+</script>
+</body>
+</html>
