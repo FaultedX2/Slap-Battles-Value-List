@@ -1,7 +1,7 @@
 {
  "updated": "2026-11-14",
  "unit": "Legendary value (1 = a typical legendary)",
- "method": "Calculated from over 100 trades, offers and posts in #trading and #high-trading (official Slap Battles Discord) between Nov 12 and Nov 14, 2026, plus how many players were offering vs. looking for each effect. The community Weekly Value List (Nov 9) is only a light anchor for effects with little trade evidence.",
+ "method": "Calculated from over 100 trades, offers and posts in #trading and #high-trading (official Slap Battles Discord) between Nov 12 and Nov 14, 2026, plus how many players were offering vs. looking for each effect.
  "source": "#trading + #high-trading: 2,575 messages, 533 unique posts, ~200 traders, Nov 12–14 2026",
  "notes": [
   "Confidence: high = 5+ trades and stable when any single trader is left out; low = few or no trades, so the value leans on the community list and supply/demand.",
