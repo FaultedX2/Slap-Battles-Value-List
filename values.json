@@ -5,7 +5,7 @@
  "source": "#trading + #high-trading: 2,575 messages, 533 unique posts, ~200 traders, Nov 12–14 2026",
  "notes": [
   "Confidence: high = 5+ trades and stable when any single trader is left out; low = few or no trades, so the value leans on the community list and supply/demand.",
-  "Supply / wanted = how many different players were offering vs. looking for the effect over the two days.",
+  "Supply / Demand = how many different players were offering vs. looking for the effect over the two days.",
   "Rares, uncommons and cat/special effects aren't valued; they're treated as ~0 in trades.",
   "Business Man effects can't be traded."
  ],
@@ -1371,5 +1371,4 @@
    "range": null
   }
  ],
- "trade_count": 65
 }
