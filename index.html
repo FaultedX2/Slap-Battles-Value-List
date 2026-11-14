@@ -141,8 +141,8 @@ tr.row td:first-child{border-left:5px solid var(--r)}
     </div>
   </header>
 
-  <div class="moverhead">Biggest differences from the community value list</div>
-  <div class="movers" id="movers" aria-label="Biggest differences from the community value list"></div>
+  <div class="moverhead">Biggest changes since the last update</div>
+  <div class="movers" id="movers" aria-label="Biggest changes since the last update"></div>
 
   <div class="grid">
     <section class="card" aria-label="Value list">
@@ -162,7 +162,7 @@ tr.row td:first-child{border-left:5px solid var(--r)}
         <select id="sort" aria-label="Sort">
           <option value="vd">Value: high → low</option>
           <option value="va">Value: low → high</option>
-          <option value="ch">Biggest difference vs list</option>
+          <option value="ch">Biggest change</option>
           <option value="cf">Confidence</option>
           <option value="dm">Demand</option>
           <option value="nm">Name A–Z</option>
@@ -170,7 +170,7 @@ tr.row td:first-child{border-left:5px solid var(--r)}
       </div>
       <div class="tablewrap">
         <table>
-          <thead><tr><th>Effect</th><th class="hide-sm">Rarity</th><th>Value</th><th>Demand</th><th class="hide-sm">Confidence</th><th class="hide-sm" title="Compared with the community Weekly Value List (Nov 9)">vs list</th><th><span class="hide-sm">Trade</span></th></tr></thead>
+          <thead><tr><th>Effect</th><th class="hide-sm">Rarity</th><th>Value</th><th>Demand</th><th class="hide-sm">Confidence</th><th class="hide-sm" title="Change since the previous update">vs last</th><th><span class="hide-sm">Trade</span></th></tr></thead>
           <tbody id="rows"></tbody>
         </table>
       </div>
@@ -1616,12 +1616,12 @@ document.getElementById('updated').textContent = 'Trades read through ' + new Da
 document.getElementById('count').textContent = FX.length + ' effects · ' + DATA.trade_count + ' trades read';
 const movers = FX.filter(e => pct(e) && e.confidence!=='low').sort((a,b)=>Math.abs(pct(b))-Math.abs(pct(a))).slice(0,6);
 document.getElementById('movers').innerHTML = movers.map(e => {
-  const p = pct(e); return `<span class="mv" style="--r:${RVAR[e.rarity]}"><span class="sw"></span>${esc(e.name)} <span class="${p>0?'up':'down'}">${p>0?'▲':'▼'} ${Math.abs(p).toFixed(0)}%</span><span class="nick">list ${e.prev} → trades ${fmt(e)}</span></span>`;
+  const p = pct(e); return `<span class="mv" style="--r:${RVAR[e.rarity]}"><span class="sw"></span>${esc(e.name)} <span class="${p>0?'up':'down'}">${p>0?'▲':'▼'} ${Math.abs(p).toFixed(0)}%</span><span class="nick">${e.prev} → ${fmt(e)}</span></span>`;
 }).join('');
 document.getElementById('notes').innerHTML = [
   esc(DATA.method),
   'How the trades are read: an ask people keep reposting with no takers shows the wanted effect is worth <i>more</i> than the offer; a trade someone says went through counts most; “+ adds” counts as about 10–15% extra.',
-  '“vs list” compares each value with the community Weekly Effect Value List (Nov 9) in #trading-info.',
+  '“vs last” is the change since the previous update. Values are refreshed about once a week, usually on Saturdays.',
   'Effects marked <span class="tag est">est.</span> are new Halloween effects with too few trades to pin down yet.',
   ...DATA.notes.map(esc),
   'The calculator calls a trade <b>fair</b> when the two sides are within 10% of each other. Demand still matters: a high-demand effect can fetch a small overpay.',
