@@ -209,11 +209,11 @@ tr.row td:first-child{border-left:5px solid var(--r)}
 <script id="data" type="application/json">{
  "updated": "2026-11-14",
  "unit": "Legendary value (1 = a typical legendary)",
- "method": "Fitted from 65 trades, asks and bids read in #trading and #high-trading (official Slap Battles Discord) between Nov 12 and Nov 14, 2026, plus how many players were offering vs. looking for each effect. The community Weekly Value List (Nov 9) is only a light anchor for effects with little trade evidence.",
+ "method": "Calculated from over 100 trades, offers and posts in #trading and #high-trading (official Slap Battles Discord) between Nov 12 and Nov 14, 2026, plus how many players were offering vs. looking for each effect.",
  "source": "#trading + #high-trading: 2,575 messages, 533 unique posts, ~200 traders, Nov 12–14 2026",
  "notes": [
   "Confidence: high = 5+ trades and stable when any single trader is left out; low = few or no trades, so the value leans on the community list and supply/demand.",
-  "Supply / wanted = how many different players were offering vs. looking for the effect over the two days.",
+  "Supply / Demand = how many different players were offering vs. looking for the effect over the two days.",
   "Rares, uncommons and cat/special effects aren't valued; they're treated as ~0 in trades.",
   "Business Man effects can't be traded."
  ],
@@ -369,7 +369,7 @@ tr.row td:first-child{border-left:5px solid var(--r)}
    ]
   },
   {
-   "name": "Haloheart",
+   "name": "Halo Heart",
    "rarity": "mythic",
    "type": "hit",
    "value": 76,
@@ -378,7 +378,7 @@ tr.row td:first-child{border-left:5px solid var(--r)}
    "estimate": false,
    "plus": false,
    "aliases": [
-    "halo heart",
+    "haloheart",
     "halo"
    ],
    "confidence": "medium",
@@ -641,7 +641,7 @@ tr.row td:first-child{border-left:5px solid var(--r)}
    ]
   },
   {
-   "name": "Jack O Lantern",
+   "name": "Jack O' Lantern",
    "rarity": "legendary",
    "type": "hit",
    "value": 10.5,
@@ -650,9 +650,9 @@ tr.row td:first-child{border-left:5px solid var(--r)}
    "estimate": false,
    "plus": false,
    "aliases": [
+    "jack o lantern",
     "jack-o-lantern",
     "jol",
-    "jack o' lantern",
     "jack"
    ],
    "confidence": "medium",
@@ -914,7 +914,7 @@ tr.row td:first-child{border-left:5px solid var(--r)}
    ]
   },
   {
-   "name": "Lovebite",
+   "name": "Love Bite",
    "rarity": "legendary",
    "type": "hit",
    "value": 2.5,
@@ -923,7 +923,7 @@ tr.row td:first-child{border-left:5px solid var(--r)}
    "estimate": false,
    "plus": false,
    "aliases": [
-    "love bite"
+    "lovebite"
    ],
    "confidence": "low",
    "trades": 1,
@@ -1139,7 +1139,7 @@ tr.row td:first-child{border-left:5px solid var(--r)}
    ]
   },
   {
-   "name": "Crunchy Explosion",
+   "name": "CRUNCHY Explosion",
    "rarity": "legendary",
    "type": "hit",
    "value": 1.4,
@@ -1148,6 +1148,7 @@ tr.row td:first-child{border-left:5px solid var(--r)}
    "estimate": false,
    "plus": false,
    "aliases": [
+    "crunchy explosion",
     "crunchy"
    ],
    "confidence": "medium",
@@ -1580,7 +1581,8 @@ tr.row td:first-child{border-left:5px solid var(--r)}
   }
  ],
  "trade_count": 65
-}</script>
+}
+</script>
 <script>
 (async () => {
 let DATA = JSON.parse(document.getElementById('data').textContent);

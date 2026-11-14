@@ -1,7 +1,7 @@
 {
  "updated": "2026-11-14",
  "unit": "Legendary value (1 = a typical legendary)",
- "method": "Calculated from over 100 trades, offers and posts in #trading and #high-trading (official Slap Battles Discord) between Nov 12 and Nov 14, 2026, plus how many players were offering vs. looking for each effect.
+ "method": "Calculated from over 100 trades, offers and posts in #trading and #high-trading (official Slap Battles Discord) between Nov 12 and Nov 14, 2026, plus how many players were offering vs. looking for each effect.",
  "source": "#trading + #high-trading: 2,575 messages, 533 unique posts, ~200 traders, Nov 12–14 2026",
  "notes": [
   "Confidence: high = 5+ trades and stable when any single trader is left out; low = few or no trades, so the value leans on the community list and supply/demand.",
@@ -161,7 +161,7 @@
    ]
   },
   {
-   "name": "Haloheart",
+   "name": "Halo Heart",
    "rarity": "mythic",
    "type": "hit",
    "value": 76,
@@ -170,7 +170,7 @@
    "estimate": false,
    "plus": false,
    "aliases": [
-    "halo heart",
+    "haloheart",
     "halo"
    ],
    "confidence": "medium",
@@ -433,7 +433,7 @@
    ]
   },
   {
-   "name": "Jack O Lantern",
+   "name": "Jack O' Lantern",
    "rarity": "legendary",
    "type": "hit",
    "value": 10.5,
@@ -442,9 +442,9 @@
    "estimate": false,
    "plus": false,
    "aliases": [
+    "jack o lantern",
     "jack-o-lantern",
     "jol",
-    "jack o' lantern",
     "jack"
    ],
    "confidence": "medium",
@@ -706,7 +706,7 @@
    ]
   },
   {
-   "name": "Lovebite",
+   "name": "Love Bite",
    "rarity": "legendary",
    "type": "hit",
    "value": 2.5,
@@ -715,7 +715,7 @@
    "estimate": false,
    "plus": false,
    "aliases": [
-    "love bite"
+    "lovebite"
    ],
    "confidence": "low",
    "trades": 1,
@@ -931,7 +931,7 @@
    ]
   },
   {
-   "name": "Crunchy Explosion",
+   "name": "CRUNCHY Explosion",
    "rarity": "legendary",
    "type": "hit",
    "value": 1.4,
@@ -940,6 +940,7 @@
    "estimate": false,
    "plus": false,
    "aliases": [
+    "crunchy explosion",
     "crunchy"
    ],
    "confidence": "medium",
@@ -1371,4 +1372,5 @@
    "range": null
   }
  ],
+ "trade_count": 65
 }
